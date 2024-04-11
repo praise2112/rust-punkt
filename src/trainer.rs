@@ -345,6 +345,7 @@ where
     // Annotating the tokens requires an unsafe block, but it won't modify any pointers,
     // just will modify some flags on the tokens.
     for t in tokens.iter() {
+      #[allow(invalid_reference_casting)]
       unsafe {
         util::annotate_first_pass::<P>(&mut *(t as *const Token as *mut Token), data);
       }
